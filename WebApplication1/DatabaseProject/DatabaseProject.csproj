@@ -80,6 +80,25 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database\Data\Schema\dbo\function\" />
+    <Folder Include="Database\Data\Schema\dbo\StoreProcedure\" />
+    <Folder Include="Database\Data\Schema\dbo\Table\Udtt\" />
+    <Folder Include="Database\Data\Schema\dbo\Views\" />
+    <Folder Include="Database\Data\Schema\Department\function\" />
+    <Folder Include="Database\Data\Schema\Department\StoreProcedure\" />
+    <Folder Include="Database\Data\Schema\Department\Table\Udtt\" />
+    <Folder Include="Database\Data\Schema\Department\Views\" />
+    <Folder Include="Database\Data\Schema\Student\function\" />
+    <Folder Include="Database\Data\Schema\Student\StoreProcedure\" />
+    <Folder Include="Database\Data\Schema\Student\Table\Udtt\" />
+    <Folder Include="Database\Data\Schema\Student\Views\" />
+    <Folder Include="Database\Data\Schema\Teacher\function\" />
+    <Folder Include="Database\Data\Schema\Teacher\StoreProcedure\" />
+    <Folder Include="Database\Data\Schema\Teacher\Table\Udtt\" />
+    <Folder Include="Database\Data\Schema\Teacher\Views\" />
+    <Folder Include="Database\MasterData\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
