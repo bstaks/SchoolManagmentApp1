@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="40adf2999f7644b0a26b290314b36849" Name="Diagram1">
+        <EntityTypeShape EntityType="TestDatabaseModel.Account" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.CartItem" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.Category" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.Customer" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.CustomerAddress" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.CustomerLadger" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.CustomerLadgerTrail" Width="1.5" PointX="9.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.CustomerTrasaction" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.MemberPasswordDetail" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.Merchant" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.Porduct" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.Test_Users" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.ValueType" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.ValueTypeGroupd" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestDatabaseModel.PasswordChangeLast" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="TestDatabaseModel.FK_Account_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_Account_Merchant" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_CustomerLadger_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_CartItem_Porduct" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_Porduct_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_Customer_Test_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_CustomerAddress_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_CustomerTrasaction_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_CustomerLadgerTrail_CustomerLadger" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_CustomerTrasaction_Porduct" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_MemberPasswordDetails_Test_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_Merchant_Test_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_Porduct_Merchant" ManuallyRouted="false" />
+        <AssociationConnector Association="TestDatabaseModel.FK_ValueType_ValueTypeGroupd" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TestDatabaseModel.AspNetRole" Width="1.5" PointX="10.375" PointY="2.5" />
+        <EntityTypeShape EntityType="TestDatabaseModel.AspNetUserClaim" Width="1.5" PointX="14.875" PointY="3.625" />
+        <EntityTypeShape EntityType="TestDatabaseModel.AspNetUserLogin" Width="1.5" PointX="14.875" PointY="1" />
+        <EntityTypeShape EntityType="TestDatabaseModel.AspNetUser" Width="1.5" PointX="12.625" PointY="1.125" />
+        <AssociationConnector Association="TestDatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="TestDatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="TestDatabaseModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
