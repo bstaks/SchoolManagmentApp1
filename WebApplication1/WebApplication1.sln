@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolManagmentApp", "Schoo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppUtility", "AppUtility\AppUtility.csproj", "{66A42581-85B9-4BD0-B762-7F4886CF4855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseProject", "DatabaseProject\DatabaseProject.csproj", "{1BDF169A-B8D6-4559-91C1-5AEF8EEFE432}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{66A42581-85B9-4BD0-B762-7F4886CF4855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66A42581-85B9-4BD0-B762-7F4886CF4855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66A42581-85B9-4BD0-B762-7F4886CF4855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BDF169A-B8D6-4559-91C1-5AEF8EEFE432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BDF169A-B8D6-4559-91C1-5AEF8EEFE432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BDF169A-B8D6-4559-91C1-5AEF8EEFE432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BDF169A-B8D6-4559-91C1-5AEF8EEFE432}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
