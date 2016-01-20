@@ -1,0 +1,48 @@
+﻿@model DLLApp.DataModels.AspNetUser
+
+@{
+    ViewBag.Title = "Profile View Details";
+}
+
+<h2>ProfileDetails</h2>
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+   <a href="@Url.Action("EditProfileDetails","Account")/@Model.NumericUserId">Edit Profile</a>
+    
+</p>

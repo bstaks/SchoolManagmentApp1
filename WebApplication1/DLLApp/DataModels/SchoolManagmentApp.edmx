@@ -1,0 +1,1340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TestDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountBalance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Createdate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="EntityId" Type="int" Nullable="false" />
+          <Property Name="EntityTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="NumericUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CartItem">
+          <Key>
+            <PropertyRef Name="CartItemId" />
+          </Key>
+          <Property Name="CartItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductItemId" Type="int" Nullable="false" />
+          <Property Name="BrowwerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsAnomoyus" Type="bit" Nullable="false" />
+          <Property Name="CartDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Categoryid" />
+          </Key>
+          <Property Name="Categoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="1000" />
+          <Property Name="ParentCategoryId" Type="int" />
+          <Property Name="CategoryTypeId" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerTitle" Type="varchar" MaxLength="10" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="200" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ACTIVE" Type="bit" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Createdate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerAddress">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address1" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="1000" />
+          <Property Name="AddressTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerLadger">
+          <Key>
+            <PropertyRef Name="CustomerLadgerId" />
+          </Key>
+          <Property Name="CustomerLadgerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerLadgerBalance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerLadgerTrail">
+          <Key>
+            <PropertyRef Name="CustomerLadgerTrailId" />
+          </Key>
+          <Property Name="CustomerLadgerTrailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerLadgerId" Type="int" Nullable="false" />
+          <Property Name="CustomerLadgerTrailBalance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TransactionDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CustomerTrasaction">
+          <Key>
+            <PropertyRef Name="CustomerTrnasactionId" />
+          </Key>
+          <Property Name="CustomerTrnasactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="TransactionAmount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TransactionDate" Type="datetime" />
+          <Property Name="TransactionStatus" Type="bit" />
+          <Property Name="TransactionType" Type="int" />
+          <Property Name="TransactioSource" Type="int" />
+          <Property Name="CurrencyTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="MemberPasswordDetails">
+          <Key>
+            <PropertyRef Name="MemberUserId" />
+          </Key>
+          <Property Name="MemberUserId" Type="int" Nullable="false" />
+          <Property Name="TestUserId" Type="int" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PasswordType" Type="int" Nullable="false" />
+          <Property Name="PasswordLockedDate" Type="datetime" />
+          <Property Name="IsActiveUser" Type="bit" />
+          <Property Name="IsLockedUsers" Type="bit" />
+        </EntityType>
+        <EntityType Name="Merchant">
+          <Key>
+            <PropertyRef Name="MerchantId" />
+          </Key>
+          <Property Name="MerchantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MerchantTitle" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MerchantName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MerchantType" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifyBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PasswordChangeLast">
+          <Key>
+            <PropertyRef Name="PasswordChangeId" />
+          </Key>
+          <Property Name="PasswordChangeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="LoginPassword" Type="varchar" MaxLength="100" />
+          <Property Name="LoginTime" Type="datetime" />
+          <Property Name="LoginBrowser" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Porduct">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ProductDescription" Type="varchar(max)" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="MerchantId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Test_Users">
+          <Key>
+            <PropertyRef Name="TestUsersId" />
+          </Key>
+          <Property Name="TestUsersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoweredUserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="createdDate" Type="datetime" Nullable="false" />
+          <Property Name="applicationId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ValueType">
+          <Key>
+            <PropertyRef Name="ValuetypeId" />
+          </Key>
+          <Property Name="ValuetypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ValueTypeGroupId" Type="int" Nullable="false" />
+          <Property Name="ValueTyepName" Type="varchar" MaxLength="1000" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="ValueTypeGroupd">
+          <Key>
+            <PropertyRef Name="ValuetypeGroupid" />
+          </Key>
+          <Property Name="ValuetypeGroupid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ValueTyepGroupName" Type="varchar" MaxLength="1000" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Account_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="EntityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Merchant">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="EntityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartItem_Porduct">
+          <End Role="Porduct" Type="Self.Porduct" Multiplicity="1" />
+          <End Role="CartItem" Type="Self.CartItem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Porduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="CartItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Test_Users">
+          <End Role="Test_Users" Type="Self.Test_Users" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Users">
+              <PropertyRef Name="TestUsersId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerAddress_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerAddress">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerLadger_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="CustomerLadger" Type="Self.CustomerLadger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="CustomerLadger">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerLadgerTrail_CustomerLadger">
+          <End Role="CustomerLadger" Type="Self.CustomerLadger" Multiplicity="1" />
+          <End Role="CustomerLadgerTrail" Type="Self.CustomerLadgerTrail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerLadger">
+              <PropertyRef Name="CustomerLadgerId" />
+            </Principal>
+            <Dependent Role="CustomerLadgerTrail">
+              <PropertyRef Name="CustomerLadgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerTrasaction_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerTrasaction" Type="Self.CustomerTrasaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerTrasaction">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerTrasaction_Porduct">
+          <End Role="Porduct" Type="Self.Porduct" Multiplicity="1" />
+          <End Role="CustomerTrasaction" Type="Self.CustomerTrasaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Porduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="CustomerTrasaction">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberPasswordDetails_Test_Users">
+          <End Role="Test_Users" Type="Self.Test_Users" Multiplicity="1" />
+          <End Role="MemberPasswordDetails" Type="Self.MemberPasswordDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Users">
+              <PropertyRef Name="TestUsersId" />
+            </Principal>
+            <Dependent Role="MemberPasswordDetails">
+              <PropertyRef Name="TestUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Merchant_Test_Users">
+          <End Role="Test_Users" Type="Self.Test_Users" Multiplicity="1" />
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Users">
+              <PropertyRef Name="TestUsersId" />
+            </Principal>
+            <Dependent Role="Merchant">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Porduct_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Porduct" Type="Self.Porduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Categoryid" />
+            </Principal>
+            <Dependent Role="Porduct">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Porduct_Merchant">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="Porduct" Type="Self.Porduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantId" />
+            </Principal>
+            <Dependent Role="Porduct">
+              <PropertyRef Name="MerchantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValueType_ValueTypeGroupd">
+          <End Role="ValueTypeGroupd" Type="Self.ValueTypeGroupd" Multiplicity="1" />
+          <End Role="ValueType" Type="Self.ValueType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ValueTypeGroupd">
+              <PropertyRef Name="ValuetypeGroupid" />
+            </Principal>
+            <Dependent Role="ValueType">
+              <PropertyRef Name="ValueTypeGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TestDatabaseModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartItem" EntityType="Self.CartItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerLadger" EntityType="Self.CustomerLadger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerLadgerTrail" EntityType="Self.CustomerLadgerTrail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerTrasaction" EntityType="Self.CustomerTrasaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberPasswordDetails" EntityType="Self.MemberPasswordDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Merchant" EntityType="Self.Merchant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Porduct" EntityType="Self.Porduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test_Users" EntityType="Self.Test_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ValueType" EntityType="Self.ValueType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ValueTypeGroupd" EntityType="Self.ValueTypeGroupd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PasswordChangeLast" EntityType="Self.PasswordChangeLast" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PasswordChangeLast].[PasswordChangeId] AS [PasswordChangeId], 
+    [PasswordChangeLast].[UserName] AS [UserName], 
+    [PasswordChangeLast].[LoginPassword] AS [LoginPassword], 
+    [PasswordChangeLast].[LoginTime] AS [LoginTime], 
+    [PasswordChangeLast].[LoginBrowser] AS [LoginBrowser]
+    FROM [dbo].[PasswordChangeLast] AS [PasswordChangeLast]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Account_Customer" Association="Self.FK_Account_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Merchant" Association="Self.FK_Account_Merchant">
+            <End Role="Merchant" EntitySet="Merchant" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItem_Porduct" Association="Self.FK_CartItem_Porduct">
+            <End Role="Porduct" EntitySet="Porduct" />
+            <End Role="CartItem" EntitySet="CartItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Test_Users" Association="Self.FK_Customer_Test_Users">
+            <End Role="Test_Users" EntitySet="Test_Users" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerAddress_Customer" Association="Self.FK_CustomerAddress_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerLadger_Account" Association="Self.FK_CustomerLadger_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="CustomerLadger" EntitySet="CustomerLadger" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerLadgerTrail_CustomerLadger" Association="Self.FK_CustomerLadgerTrail_CustomerLadger">
+            <End Role="CustomerLadger" EntitySet="CustomerLadger" />
+            <End Role="CustomerLadgerTrail" EntitySet="CustomerLadgerTrail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerTrasaction_Customer" Association="Self.FK_CustomerTrasaction_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerTrasaction" EntitySet="CustomerTrasaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerTrasaction_Porduct" Association="Self.FK_CustomerTrasaction_Porduct">
+            <End Role="Porduct" EntitySet="Porduct" />
+            <End Role="CustomerTrasaction" EntitySet="CustomerTrasaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberPasswordDetails_Test_Users" Association="Self.FK_MemberPasswordDetails_Test_Users">
+            <End Role="Test_Users" EntitySet="Test_Users" />
+            <End Role="MemberPasswordDetails" EntitySet="MemberPasswordDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Merchant_Test_Users" Association="Self.FK_Merchant_Test_Users">
+            <End Role="Test_Users" EntitySet="Test_Users" />
+            <End Role="Merchant" EntitySet="Merchant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Porduct_Category" Association="Self.FK_Porduct_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Porduct" EntitySet="Porduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Porduct_Merchant" Association="Self.FK_Porduct_Merchant">
+            <End Role="Merchant" EntitySet="Merchant" />
+            <End Role="Porduct" EntitySet="Porduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValueType_ValueTypeGroupd" Association="Self.FK_ValueType_ValueTypeGroupd">
+            <End Role="ValueTypeGroupd" EntitySet="ValueTypeGroupd" />
+            <End Role="ValueType" EntitySet="ValueType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Createdate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="EntityId" Type="Int32" Nullable="false" />
+          <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Account_Customer" FromRole="Account" ToRole="Customer" />
+          <NavigationProperty Name="Merchant" Relationship="Self.FK_Account_Merchant" FromRole="Account" ToRole="Merchant" />
+          <NavigationProperty Name="CustomerLadgers" Relationship="Self.FK_CustomerLadger_Account" FromRole="Account" ToRole="CustomerLadger" />
+        </EntityType>
+        <EntityType Name="CartItem">
+          <Key>
+            <PropertyRef Name="CartItemId" />
+          </Key>
+          <Property Name="CartItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductItemId" Type="Int32" Nullable="false" />
+          <Property Name="BrowwerId" Type="Guid" Nullable="false" />
+          <Property Name="IsAnomoyus" Type="Boolean" Nullable="false" />
+          <Property Name="CartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Porduct" Relationship="Self.FK_CartItem_Porduct" FromRole="CartItem" ToRole="Porduct" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Categoryid" />
+          </Key>
+          <Property Name="Categoryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ParentCategoryId" Type="Int32" />
+          <Property Name="CategoryTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Porducts" Relationship="Self.FK_Porduct_Category" FromRole="Category" ToRole="Porduct" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerTitle" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ACTIVE" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Createdate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Customer" FromRole="Customer" ToRole="Account" />
+          <NavigationProperty Name="Test_Users" Relationship="Self.FK_Customer_Test_Users" FromRole="Customer" ToRole="Test_Users" />
+          <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK_CustomerAddress_Customer" FromRole="Customer" ToRole="CustomerAddress" />
+          <NavigationProperty Name="CustomerTrasactions" Relationship="Self.FK_CustomerTrasaction_Customer" FromRole="Customer" ToRole="CustomerTrasaction" />
+        </EntityType>
+        <EntityType Name="CustomerAddress">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerAddress_Customer" FromRole="CustomerAddress" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="CustomerLadger">
+          <Key>
+            <PropertyRef Name="CustomerLadgerId" />
+          </Key>
+          <Property Name="CustomerLadgerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerLadgerBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_CustomerLadger_Account" FromRole="CustomerLadger" ToRole="Account" />
+          <NavigationProperty Name="CustomerLadgerTrails" Relationship="Self.FK_CustomerLadgerTrail_CustomerLadger" FromRole="CustomerLadger" ToRole="CustomerLadgerTrail" />
+        </EntityType>
+        <EntityType Name="CustomerLadgerTrail">
+          <Key>
+            <PropertyRef Name="CustomerLadgerTrailId" />
+          </Key>
+          <Property Name="CustomerLadgerTrailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerLadgerId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerLadgerTrailBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CustomerLadger" Relationship="Self.FK_CustomerLadgerTrail_CustomerLadger" FromRole="CustomerLadgerTrail" ToRole="CustomerLadger" />
+        </EntityType>
+        <EntityType Name="CustomerTrasaction">
+          <Key>
+            <PropertyRef Name="CustomerTrnasactionId" />
+          </Key>
+          <Property Name="CustomerTrnasactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="TransactionAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+          <Property Name="TransactionStatus" Type="Boolean" />
+          <Property Name="TransactionType" Type="Int32" />
+          <Property Name="TransactioSource" Type="Int32" />
+          <Property Name="CurrencyTypeId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerTrasaction_Customer" FromRole="CustomerTrasaction" ToRole="Customer" />
+          <NavigationProperty Name="Porduct" Relationship="Self.FK_CustomerTrasaction_Porduct" FromRole="CustomerTrasaction" ToRole="Porduct" />
+        </EntityType>
+        <EntityType Name="MemberPasswordDetail">
+          <Key>
+            <PropertyRef Name="MemberUserId" />
+          </Key>
+          <Property Name="MemberUserId" Type="Int32" Nullable="false" />
+          <Property Name="TestUserId" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordType" Type="Int32" Nullable="false" />
+          <Property Name="PasswordLockedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActiveUser" Type="Boolean" />
+          <Property Name="IsLockedUsers" Type="Boolean" />
+          <NavigationProperty Name="Test_Users" Relationship="Self.FK_MemberPasswordDetails_Test_Users" FromRole="MemberPasswordDetails" ToRole="Test_Users" />
+        </EntityType>
+        <EntityType Name="Merchant">
+          <Key>
+            <PropertyRef Name="MerchantId" />
+          </Key>
+          <Property Name="MerchantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MerchantTitle" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MerchantName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MerchantType" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Merchant" FromRole="Merchant" ToRole="Account" />
+          <NavigationProperty Name="Test_Users" Relationship="Self.FK_Merchant_Test_Users" FromRole="Merchant" ToRole="Test_Users" />
+          <NavigationProperty Name="Porducts" Relationship="Self.FK_Porduct_Merchant" FromRole="Merchant" ToRole="Porduct" />
+        </EntityType>
+        <EntityType Name="Porduct">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="MerchantId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CartItem" Relationship="Self.FK_CartItem_Porduct" FromRole="Porduct" ToRole="CartItem" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Porduct_Category" FromRole="Porduct" ToRole="Category" />
+          <NavigationProperty Name="CustomerTrasactions" Relationship="Self.FK_CustomerTrasaction_Porduct" FromRole="Porduct" ToRole="CustomerTrasaction" />
+          <NavigationProperty Name="Merchant" Relationship="Self.FK_Porduct_Merchant" FromRole="Porduct" ToRole="Merchant" />
+        </EntityType>
+        <EntityType Name="Test_Users">
+          <Key>
+            <PropertyRef Name="TestUsersId" />
+          </Key>
+          <Property Name="TestUsersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoweredUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="applicationId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Test_Users" FromRole="Test_Users" ToRole="Customer" />
+          <NavigationProperty Name="MemberPasswordDetails" Relationship="Self.FK_MemberPasswordDetails_Test_Users" FromRole="Test_Users" ToRole="MemberPasswordDetails" />
+          <NavigationProperty Name="Merchants" Relationship="Self.FK_Merchant_Test_Users" FromRole="Test_Users" ToRole="Merchant" />
+        </EntityType>
+        <EntityType Name="ValueType">
+          <Key>
+            <PropertyRef Name="ValuetypeId" />
+          </Key>
+          <Property Name="ValuetypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValueTypeGroupId" Type="Int32" Nullable="false" />
+          <Property Name="ValueTyepName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="ValueTypeGroupd" Relationship="Self.FK_ValueType_ValueTypeGroupd" FromRole="ValueType" ToRole="ValueTypeGroupd" />
+        </EntityType>
+        <EntityType Name="ValueTypeGroupd">
+          <Key>
+            <PropertyRef Name="ValuetypeGroupid" />
+          </Key>
+          <Property Name="ValuetypeGroupid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValueTyepGroupName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="ValueTypes" Relationship="Self.FK_ValueType_ValueTypeGroupd" FromRole="ValueTypeGroupd" ToRole="ValueType" />
+        </EntityType>
+        <EntityType Name="PasswordChangeLast">
+          <Key>
+            <PropertyRef Name="PasswordChangeId" />
+          </Key>
+          <Property Name="PasswordChangeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LoginPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
+          <Property Name="LoginBrowser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Account_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="EntityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Merchant">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantId" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="EntityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerLadger_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="CustomerLadger" Type="Self.CustomerLadger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="CustomerLadger">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartItem_Porduct">
+          <End Role="Porduct" Type="Self.Porduct" Multiplicity="1" />
+          <End Role="CartItem" Type="Self.CartItem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Porduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="CartItem">
+              <PropertyRef Name="CartItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Porduct_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Porduct" Type="Self.Porduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Categoryid" />
+            </Principal>
+            <Dependent Role="Porduct">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Test_Users">
+          <End Role="Test_Users" Type="Self.Test_Users" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Users">
+              <PropertyRef Name="TestUsersId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerAddress_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerAddress">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerTrasaction_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="CustomerTrasaction" Type="Self.CustomerTrasaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="CustomerTrasaction">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerLadgerTrail_CustomerLadger">
+          <End Role="CustomerLadger" Type="Self.CustomerLadger" Multiplicity="1" />
+          <End Role="CustomerLadgerTrail" Type="Self.CustomerLadgerTrail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerLadger">
+              <PropertyRef Name="CustomerLadgerId" />
+            </Principal>
+            <Dependent Role="CustomerLadgerTrail">
+              <PropertyRef Name="CustomerLadgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerTrasaction_Porduct">
+          <End Role="Porduct" Type="Self.Porduct" Multiplicity="1" />
+          <End Role="CustomerTrasaction" Type="Self.CustomerTrasaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Porduct">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="CustomerTrasaction">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberPasswordDetails_Test_Users">
+          <End Role="Test_Users" Type="Self.Test_Users" Multiplicity="1" />
+          <End Role="MemberPasswordDetails" Type="Self.MemberPasswordDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Users">
+              <PropertyRef Name="TestUsersId" />
+            </Principal>
+            <Dependent Role="MemberPasswordDetails">
+              <PropertyRef Name="TestUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Merchant_Test_Users">
+          <End Role="Test_Users" Type="Self.Test_Users" Multiplicity="1" />
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test_Users">
+              <PropertyRef Name="TestUsersId" />
+            </Principal>
+            <Dependent Role="Merchant">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Porduct_Merchant">
+          <End Role="Merchant" Type="Self.Merchant" Multiplicity="1" />
+          <End Role="Porduct" Type="Self.Porduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Merchant">
+              <PropertyRef Name="MerchantId" />
+            </Principal>
+            <Dependent Role="Porduct">
+              <PropertyRef Name="MerchantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValueType_ValueTypeGroupd">
+          <End Role="ValueTypeGroupd" Type="Self.ValueTypeGroupd" Multiplicity="1" />
+          <End Role="ValueType" Type="Self.ValueType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ValueTypeGroupd">
+              <PropertyRef Name="ValuetypeGroupid" />
+            </Principal>
+            <Dependent Role="ValueType">
+              <PropertyRef Name="ValueTypeGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TestDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="CartItems" EntityType="Self.CartItem" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerAddresses" EntityType="Self.CustomerAddress" />
+          <EntitySet Name="CustomerLadgers" EntityType="Self.CustomerLadger" />
+          <EntitySet Name="CustomerLadgerTrails" EntityType="Self.CustomerLadgerTrail" />
+          <EntitySet Name="CustomerTrasactions" EntityType="Self.CustomerTrasaction" />
+          <EntitySet Name="MemberPasswordDetails" EntityType="Self.MemberPasswordDetail" />
+          <EntitySet Name="Merchants" EntityType="Self.Merchant" />
+          <EntitySet Name="Porducts" EntityType="Self.Porduct" />
+          <EntitySet Name="Test_Users" EntityType="Self.Test_Users" />
+          <EntitySet Name="ValueTypes" EntityType="Self.ValueType" />
+          <EntitySet Name="ValueTypeGroupds" EntityType="Self.ValueTypeGroupd" />
+          <EntitySet Name="PasswordChangeLasts" EntityType="Self.PasswordChangeLast" />
+          <AssociationSet Name="FK_Account_Customer" Association="Self.FK_Account_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Merchant" Association="Self.FK_Account_Merchant">
+            <End Role="Merchant" EntitySet="Merchants" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerLadger_Account" Association="Self.FK_CustomerLadger_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="CustomerLadger" EntitySet="CustomerLadgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartItem_Porduct" Association="Self.FK_CartItem_Porduct">
+            <End Role="Porduct" EntitySet="Porducts" />
+            <End Role="CartItem" EntitySet="CartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Porduct_Category" Association="Self.FK_Porduct_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Porduct" EntitySet="Porducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Test_Users" Association="Self.FK_Customer_Test_Users">
+            <End Role="Test_Users" EntitySet="Test_Users" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerAddress_Customer" Association="Self.FK_CustomerAddress_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerTrasaction_Customer" Association="Self.FK_CustomerTrasaction_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerTrasaction" EntitySet="CustomerTrasactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerLadgerTrail_CustomerLadger" Association="Self.FK_CustomerLadgerTrail_CustomerLadger">
+            <End Role="CustomerLadger" EntitySet="CustomerLadgers" />
+            <End Role="CustomerLadgerTrail" EntitySet="CustomerLadgerTrails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerTrasaction_Porduct" Association="Self.FK_CustomerTrasaction_Porduct">
+            <End Role="Porduct" EntitySet="Porducts" />
+            <End Role="CustomerTrasaction" EntitySet="CustomerTrasactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberPasswordDetails_Test_Users" Association="Self.FK_MemberPasswordDetails_Test_Users">
+            <End Role="Test_Users" EntitySet="Test_Users" />
+            <End Role="MemberPasswordDetails" EntitySet="MemberPasswordDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Merchant_Test_Users" Association="Self.FK_Merchant_Test_Users">
+            <End Role="Test_Users" EntitySet="Test_Users" />
+            <End Role="Merchant" EntitySet="Merchants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Porduct_Merchant" Association="Self.FK_Porduct_Merchant">
+            <End Role="Merchant" EntitySet="Merchants" />
+            <End Role="Porduct" EntitySet="Porducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValueType_ValueTypeGroupd" Association="Self.FK_ValueType_ValueTypeGroupd">
+            <End Role="ValueTypeGroupd" EntitySet="ValueTypeGroupds" />
+            <End Role="ValueType" EntitySet="ValueTypes" />
+          </AssociationSet>
+          <EntitySet Name="AspNetRoles" EntityType="TestDatabaseModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="TestDatabaseModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="TestDatabaseModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="TestDatabaseModel.AspNetUser" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="TestDatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="TestDatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="TestDatabaseModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="TestDatabaseModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="TestDatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="TestDatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NumericUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="TestDatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="TestDatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="TestDatabaseModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="TestDatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TestDatabaseModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="TestDatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TestDatabaseModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="TestDatabaseModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="TestDatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestDatabaseModelStoreContainer" CdmEntityContainer="TestDatabaseEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartItems">
+            <EntityTypeMapping TypeName="TestDatabaseModel.CartItem">
+              <MappingFragment StoreEntitySet="CartItem">
+                <ScalarProperty Name="CartItemId" ColumnName="CartItemId" />
+                <ScalarProperty Name="ProductItemId" ColumnName="ProductItemId" />
+                <ScalarProperty Name="BrowwerId" ColumnName="BrowwerId" />
+                <ScalarProperty Name="IsAnomoyus" ColumnName="IsAnomoyus" />
+                <ScalarProperty Name="CartDate" ColumnName="CartDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Categoryid" ColumnName="Categoryid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+                <ScalarProperty Name="CategoryTypeId" ColumnName="CategoryTypeId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerTitle" ColumnName="CustomerTitle" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerAddresses">
+            <EntityTypeMapping TypeName="TestDatabaseModel.CustomerAddress">
+              <MappingFragment StoreEntitySet="CustomerAddress">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerLadgers">
+            <EntityTypeMapping TypeName="TestDatabaseModel.CustomerLadger">
+              <MappingFragment StoreEntitySet="CustomerLadger">
+                <ScalarProperty Name="CustomerLadgerId" ColumnName="CustomerLadgerId" />
+                <ScalarProperty Name="CustomerLadgerBalance" ColumnName="CustomerLadgerBalance" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerLadgerTrails">
+            <EntityTypeMapping TypeName="TestDatabaseModel.CustomerLadgerTrail">
+              <MappingFragment StoreEntitySet="CustomerLadgerTrail">
+                <ScalarProperty Name="CustomerLadgerTrailId" ColumnName="CustomerLadgerTrailId" />
+                <ScalarProperty Name="CustomerLadgerId" ColumnName="CustomerLadgerId" />
+                <ScalarProperty Name="CustomerLadgerTrailBalance" ColumnName="CustomerLadgerTrailBalance" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTrasactions">
+            <EntityTypeMapping TypeName="TestDatabaseModel.CustomerTrasaction">
+              <MappingFragment StoreEntitySet="CustomerTrasaction">
+                <ScalarProperty Name="CustomerTrnasactionId" ColumnName="CustomerTrnasactionId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TransactionAmount" ColumnName="TransactionAmount" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="TransactionStatus" ColumnName="TransactionStatus" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="TransactioSource" ColumnName="TransactioSource" />
+                <ScalarProperty Name="CurrencyTypeId" ColumnName="CurrencyTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberPasswordDetails">
+            <EntityTypeMapping TypeName="TestDatabaseModel.MemberPasswordDetail">
+              <MappingFragment StoreEntitySet="MemberPasswordDetails">
+                <ScalarProperty Name="MemberUserId" ColumnName="MemberUserId" />
+                <ScalarProperty Name="TestUserId" ColumnName="TestUserId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="PasswordType" ColumnName="PasswordType" />
+                <ScalarProperty Name="PasswordLockedDate" ColumnName="PasswordLockedDate" />
+                <ScalarProperty Name="IsActiveUser" ColumnName="IsActiveUser" />
+                <ScalarProperty Name="IsLockedUsers" ColumnName="IsLockedUsers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Merchants">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Merchant">
+              <MappingFragment StoreEntitySet="Merchant">
+                <ScalarProperty Name="MerchantId" ColumnName="MerchantId" />
+                <ScalarProperty Name="MerchantTitle" ColumnName="MerchantTitle" />
+                <ScalarProperty Name="MerchantName" ColumnName="MerchantName" />
+                <ScalarProperty Name="MerchantType" ColumnName="MerchantType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Porducts">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Porduct">
+              <MappingFragment StoreEntitySet="Porduct">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="MerchantId" ColumnName="MerchantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test_Users">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Test_Users">
+              <MappingFragment StoreEntitySet="Test_Users">
+                <ScalarProperty Name="TestUsersId" ColumnName="TestUsersId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValueTypes">
+            <EntityTypeMapping TypeName="TestDatabaseModel.ValueType">
+              <MappingFragment StoreEntitySet="ValueType">
+                <ScalarProperty Name="ValuetypeId" ColumnName="ValuetypeId" />
+                <ScalarProperty Name="ValueTypeGroupId" ColumnName="ValueTypeGroupId" />
+                <ScalarProperty Name="ValueTyepName" ColumnName="ValueTyepName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ValueTypeGroupds">
+            <EntityTypeMapping TypeName="TestDatabaseModel.ValueTypeGroupd">
+              <MappingFragment StoreEntitySet="ValueTypeGroupd">
+                <ScalarProperty Name="ValuetypeGroupid" ColumnName="ValuetypeGroupid" />
+                <ScalarProperty Name="ValueTyepGroupName" ColumnName="ValueTyepGroupName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasswordChangeLasts">
+            <EntityTypeMapping TypeName="TestDatabaseModel.PasswordChangeLast">
+              <MappingFragment StoreEntitySet="PasswordChangeLast">
+                <ScalarProperty Name="PasswordChangeId" ColumnName="PasswordChangeId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="LoginBrowser" ColumnName="LoginBrowser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="TestDatabaseModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="TestDatabaseModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="TestDatabaseModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="TestDatabaseModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="NumericUserId" ColumnName="NumericUserId" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="TestDatabaseModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
