@@ -16,6 +16,23 @@
           <Property Name="EntityId" Type="int" Nullable="false" />
           <Property Name="EntityTypeId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="AddressInfo">
+          <Key>
+            <PropertyRef Name="AdressId" />
+          </Key>
+          <Property Name="AdressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressInfo1" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="AddressInfo2" Type="varchar" MaxLength="500" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="LocationName" Type="varchar" MaxLength="150" />
+          <Property Name="Pincode" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="int" />
+          <Property Name="Mobile" Type="int" Nullable="false" />
+          <Property Name="EntityTypeId" Type="int" Nullable="false" />
+          <Property Name="AddressTypeId" Type="int" Nullable="false" />
+          <Property Name="ENtityId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -207,7 +224,7 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
           <Key>
             <PropertyRef Name="ValuetypeId" />
           </Key>
-          <Property Name="ValuetypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ValuetypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ValueTypeGroupId" Type="int" Nullable="false" />
           <Property Name="ValueTyepName" Type="varchar" MaxLength="1000" />
           <Property Name="Active" Type="bit" />
@@ -219,6 +236,65 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
           <Property Name="ValuetypeGroupid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ValueTyepGroupName" Type="varchar" MaxLength="1000" />
           <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TestDatabase.Department.DepartmentTeacher' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DepartmentTeacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="TeacherId" Type="int" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="HODTeacherId" Type="int" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="FatherName" Type="varchar" MaxLength="150" />
+          <Property Name="MotherName" Type="varchar" MaxLength="150" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="JoiningDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="PreferAddressTypeId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="ISMarried" Type="bit" />
+          <Property Name="MarriedPersonName" Type="varchar" MaxLength="150" />
+          <Property Name="JoiningDate" Type="datetime" Nullable="false" />
+          <Property Name="MotherName" Type="varchar" MaxLength="150" />
+          <Property Name="FatherName" Type="varchar" MaxLength="150" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Account_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
@@ -384,6 +460,18 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Department_DepartmentTeacher">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="DepartmentTeacher" Type="Self.DepartmentTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="DepartmentTeacher">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MemberPasswordDetails_Test_Users">
           <End Role="Test_Users" Type="Self.Test_Users" Multiplicity="1" />
           <End Role="MemberPasswordDetails" Type="Self.MemberPasswordDetails" Multiplicity="*" />
@@ -432,6 +520,42 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Student_Address">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="AddressInfo" Type="Self.AddressInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="AddressInfo">
+              <PropertyRef Name="ENtityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Teacher_Address">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="AddressInfo" Type="Self.AddressInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="AddressInfo">
+              <PropertyRef Name="ENtityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Teacher_DepartmentTeacher">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="DepartmentTeacher" Type="Self.DepartmentTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="DepartmentTeacher">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ValueType_ValueTypeGroupd">
           <End Role="ValueTypeGroupd" Type="Self.ValueTypeGroupd" Multiplicity="1" />
           <End Role="ValueType" Type="Self.ValueType" Multiplicity="*" />
@@ -446,6 +570,7 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
         </Association>
         <EntityContainer Name="TestDatabaseModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressInfo" EntityType="Self.AddressInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -464,6 +589,9 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
           <EntitySet Name="Test_Users" EntityType="Self.Test_Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ValueType" EntityType="Self.ValueType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ValueTypeGroupd" EntityType="Self.ValueTypeGroupd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="Department" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="Student" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="Teacher" store:Type="Tables" />
           <EntitySet Name="PasswordChangeLast" EntityType="Self.PasswordChangeLast" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [PasswordChangeLast].[PasswordChangeId] AS [PasswordChangeId], 
@@ -472,6 +600,14 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
     [PasswordChangeLast].[LoginTime] AS [LoginTime], 
     [PasswordChangeLast].[LoginBrowser] AS [LoginBrowser]
     FROM [dbo].[PasswordChangeLast] AS [PasswordChangeLast]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DepartmentTeacher" EntityType="Self.DepartmentTeacher" store:Type="Tables" store:Schema="Department">
+            <DefiningQuery>SELECT 
+    [DepartmentTeacher].[TeacherId] AS [TeacherId], 
+    [DepartmentTeacher].[DepartmentId] AS [DepartmentId], 
+    [DepartmentTeacher].[HODTeacherId] AS [HODTeacherId], 
+    [DepartmentTeacher].[Active] AS [Active]
+    FROM [Department].[DepartmentTeacher] AS [DepartmentTeacher]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Account_Customer" Association="Self.FK_Account_Customer">
             <End Role="Customer" EntitySet="Customer" />
@@ -525,6 +661,10 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
+          <AssociationSet Name="fk_Department_DepartmentTeacher" Association="Self.fk_Department_DepartmentTeacher">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="DepartmentTeacher" EntitySet="DepartmentTeacher" />
+          </AssociationSet>
           <AssociationSet Name="FK_MemberPasswordDetails_Test_Users" Association="Self.FK_MemberPasswordDetails_Test_Users">
             <End Role="Test_Users" EntitySet="Test_Users" />
             <End Role="MemberPasswordDetails" EntitySet="MemberPasswordDetails" />
@@ -540,6 +680,18 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
           <AssociationSet Name="FK_Porduct_Merchant" Association="Self.FK_Porduct_Merchant">
             <End Role="Merchant" EntitySet="Merchant" />
             <End Role="Porduct" EntitySet="Porduct" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Student_Address" Association="Self.fk_Student_Address">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="AddressInfo" EntitySet="AddressInfo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Teacher_Address" Association="Self.fk_Teacher_Address">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="AddressInfo" EntitySet="AddressInfo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Teacher_DepartmentTeacher" Association="Self.fk_Teacher_DepartmentTeacher">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="DepartmentTeacher" EntitySet="DepartmentTeacher" />
           </AssociationSet>
           <AssociationSet Name="FK_ValueType_ValueTypeGroupd" Association="Self.FK_ValueType_ValueTypeGroupd">
             <End Role="ValueTypeGroupd" EntitySet="ValueTypeGroupd" />
@@ -994,6 +1146,27 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Departments" EntityType="TestDatabaseModel.Department" />
+          <EntitySet Name="Students" EntityType="TestDatabaseModel.Student" />
+          <EntitySet Name="Teachers" EntityType="TestDatabaseModel.Teacher" />
+          <EntitySet Name="DepartmentTeachers" EntityType="TestDatabaseModel.DepartmentTeacher" />
+          <AssociationSet Name="fk_Department_DepartmentTeacher" Association="TestDatabaseModel.fk_Department_DepartmentTeacher">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="DepartmentTeacher" EntitySet="DepartmentTeachers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Teacher_DepartmentTeacher" Association="TestDatabaseModel.fk_Teacher_DepartmentTeacher">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="DepartmentTeacher" EntitySet="DepartmentTeachers" />
+          </AssociationSet>
+          <EntitySet Name="AddressInfoes" EntityType="TestDatabaseModel.AddressInfo" />
+          <AssociationSet Name="fk_Student_Address" Association="TestDatabaseModel.fk_Student_Address">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="AddressInfo" EntitySet="AddressInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Teacher_Address" Association="TestDatabaseModel.fk_Teacher_Address">
+            <End Role="Teacher" EntitySet="Teachers" />
+            <End Role="AddressInfo" EntitySet="AddressInfoes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -1077,6 +1250,136 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
         <Association Name="AspNetUserRoles">
           <End Type="TestDatabaseModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="TestDatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="DepartmentTeachers" Relationship="TestDatabaseModel.fk_Department_DepartmentTeacher" FromRole="Department" ToRole="DepartmentTeacher" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="MotherName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="PreferAddressTypeId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AddressInfoes" Relationship="TestDatabaseModel.fk_Student_Address" FromRole="Student" ToRole="AddressInfo" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+          </Key>
+          <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ISMarried" Type="Boolean" />
+          <Property Name="MarriedPersonName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="JoiningDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MotherName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="DepartmentTeachers" Relationship="TestDatabaseModel.fk_Teacher_DepartmentTeacher" FromRole="Teacher" ToRole="DepartmentTeacher" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AddressInfoes" Relationship="TestDatabaseModel.fk_Teacher_Address" FromRole="Teacher" ToRole="AddressInfo" />
+        </EntityType>
+        <EntityType Name="DepartmentTeacher">
+          <Key>
+            <PropertyRef Name="TeacherId" />
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="HODTeacherId" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Department" Relationship="TestDatabaseModel.fk_Department_DepartmentTeacher" FromRole="DepartmentTeacher" ToRole="Department" />
+          <NavigationProperty Name="Teacher" Relationship="TestDatabaseModel.fk_Teacher_DepartmentTeacher" FromRole="DepartmentTeacher" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="fk_Department_DepartmentTeacher">
+          <End Type="TestDatabaseModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="TestDatabaseModel.DepartmentTeacher" Role="DepartmentTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="DepartmentTeacher">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Teacher_DepartmentTeacher">
+          <End Type="TestDatabaseModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="TestDatabaseModel.DepartmentTeacher" Role="DepartmentTeacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="DepartmentTeacher">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AddressInfo">
+          <Key>
+            <PropertyRef Name="AdressId" />
+          </Key>
+          <Property Name="AdressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressInfo1" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AddressInfo2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="LocationName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Pincode" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="Int32" />
+          <Property Name="Mobile" Type="Int32" Nullable="false" />
+          <Property Name="EntityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ENtityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="TestDatabaseModel.fk_Student_Address" FromRole="AddressInfo" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="TestDatabaseModel.fk_Teacher_Address" FromRole="AddressInfo" ToRole="Teacher" />
+        </EntityType>
+        <Association Name="fk_Student_Address">
+          <End Type="TestDatabaseModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="TestDatabaseModel.AddressInfo" Role="AddressInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="AddressInfo">
+              <PropertyRef Name="ENtityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Teacher_Address">
+          <End Type="TestDatabaseModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="TestDatabaseModel.AddressInfo" Role="AddressInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="TeacherId" />
+            </Principal>
+            <Dependent Role="AddressInfo">
+              <PropertyRef Name="ENtityId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -1314,6 +1617,84 @@ warning 6002: The table/view 'TestDatabase.dbo.PasswordChangeLast' does not have
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PreferAddressTypeId" ColumnName="PreferAddressTypeId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="MotherName" ColumnName="MotherName" />
+                <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+                <ScalarProperty Name="MarriedPersonName" ColumnName="MarriedPersonName" />
+                <ScalarProperty Name="ISMarried" ColumnName="ISMarried" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentTeachers">
+            <EntityTypeMapping TypeName="TestDatabaseModel.DepartmentTeacher">
+              <MappingFragment StoreEntitySet="DepartmentTeacher">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="HODTeacherId" ColumnName="HODTeacherId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressInfoes">
+            <EntityTypeMapping TypeName="TestDatabaseModel.AddressInfo">
+              <MappingFragment StoreEntitySet="AddressInfo">
+                <ScalarProperty Name="ENtityId" ColumnName="ENtityId" />
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="AddressInfo2" ColumnName="AddressInfo2" />
+                <ScalarProperty Name="AddressInfo1" ColumnName="AddressInfo1" />
+                <ScalarProperty Name="AdressId" ColumnName="AdressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

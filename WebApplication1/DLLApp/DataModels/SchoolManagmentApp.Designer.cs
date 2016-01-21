@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\t_abhisheks3\documents\visual studio 2015\Projects\SchoolManagmentApp\DLLApp\DataModels\SchoolManagmentApp.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\T_AbhishekS3\Source\Repos\SchoolManagmentApp1\WebApplication1\DLLApp\DataModels\SchoolManagmentApp.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -44,5 +44,10 @@ namespace DLLApp.DataModels
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<DepartmentTeacher> DepartmentTeachers { get; set; }
+        public virtual DbSet<AddressInfo> AddressInfoes { get; set; }
     }
 }

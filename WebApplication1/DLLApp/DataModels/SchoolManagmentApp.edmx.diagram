@@ -41,6 +41,15 @@
         <AssociationConnector Association="TestDatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="TestDatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="TestDatabaseModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="TestDatabaseModel.Department" Width="1.5" PointX="10.75" PointY="6.875" />
+        <EntityTypeShape EntityType="TestDatabaseModel.Student" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TestDatabaseModel.Teacher" Width="1.5" PointX="10.75" PointY="16.125" />
+        <EntityTypeShape EntityType="TestDatabaseModel.DepartmentTeacher" Width="1.5" PointX="13" PointY="6.875" />
+        <AssociationConnector Association="TestDatabaseModel.fk_Department_DepartmentTeacher" />
+        <AssociationConnector Association="TestDatabaseModel.fk_Teacher_DepartmentTeacher" />
+        <EntityTypeShape EntityType="TestDatabaseModel.AddressInfo" Width="1.5" PointX="13" PointY="10.625" />
+        <AssociationConnector Association="TestDatabaseModel.fk_Student_Address" />
+        <AssociationConnector Association="TestDatabaseModel.fk_Teacher_Address" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
