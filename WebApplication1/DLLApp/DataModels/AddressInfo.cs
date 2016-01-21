@@ -16,17 +16,22 @@ namespace DLLApp.DataModels
     public partial class AddressInfo
     {
         public int AdressId { get; set; }
+        [Required]
         [Display(Name = "Address Line1")]
         public string AddressInfo1 { get; set; }
         [Display(Name = "Address Line2")]
         public string AddressInfo2 { get; set; }
         [Display(Name = "State")]
+        [Required(ErrorMessage ="Please Select State Name")]
         public Nullable<int> StateID { get; set; }
         [Display(Name = "City")]
         public Nullable<int> CityId { get; set; }
         public string LocationName { get; set; }
+        [DataType(DataType.Text)]
         public int Pincode { get; set; }
+        [DataType(DataType.Text)]
         public Nullable<int> PhoneNumber { get; set; }
+        [DataType(DataType.Text)]
         public int Mobile { get; set; }
         public int EntityTypeId { get; set; }
         public int AddressTypeId { get; set; }
