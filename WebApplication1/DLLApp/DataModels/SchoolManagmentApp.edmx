@@ -160,6 +160,17 @@
           <Property Name="TransactioSource" Type="int" />
           <Property Name="CurrencyTypeId" Type="int" />
         </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Desc" Type="varchar" MaxLength="500" />
+          <Property Name="LocationType" Type="int" Nullable="false" />
+          <Property Name="ParentLocationId" Type="int" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
         <EntityType Name="MemberPasswordDetails">
           <Key>
             <PropertyRef Name="MemberUserId" />
@@ -583,6 +594,7 @@ warning 6002: The table/view 'TestDatabase.Department.DepartmentTeacher' does no
           <EntitySet Name="CustomerLadger" EntityType="Self.CustomerLadger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerLadgerTrail" EntityType="Self.CustomerLadgerTrail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerTrasaction" EntityType="Self.CustomerTrasaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MemberPasswordDetails" EntityType="Self.MemberPasswordDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Merchant" EntityType="Self.Merchant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Porduct" EntityType="Self.Porduct" Schema="dbo" store:Type="Tables" />
@@ -1167,6 +1179,7 @@ warning 6002: The table/view 'TestDatabase.Department.DepartmentTeacher' does no
             <End Role="Teacher" EntitySet="Teachers" />
             <End Role="AddressInfo" EntitySet="AddressInfoes" />
           </AssociationSet>
+          <EntitySet Name="Locations" EntityType="TestDatabaseModel.Location" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -1381,6 +1394,17 @@ warning 6002: The table/view 'TestDatabase.Department.DepartmentTeacher' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Desc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LocationType" Type="Int32" Nullable="false" />
+          <Property Name="ParentLocationId" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1692,6 +1716,18 @@ warning 6002: The table/view 'TestDatabase.Department.DepartmentTeacher' does no
                 <ScalarProperty Name="AddressInfo2" ColumnName="AddressInfo2" />
                 <ScalarProperty Name="AddressInfo1" ColumnName="AddressInfo1" />
                 <ScalarProperty Name="AdressId" ColumnName="AdressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="TestDatabaseModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ParentLocationId" ColumnName="ParentLocationId" />
+                <ScalarProperty Name="LocationType" ColumnName="LocationType" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

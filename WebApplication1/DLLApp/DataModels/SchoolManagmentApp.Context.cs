@@ -49,5 +49,6 @@ namespace DLLApp.DataModels
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<DepartmentTeacher> DepartmentTeachers { get; set; }
         public virtual DbSet<AddressInfo> AddressInfoes { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
     }
 }
