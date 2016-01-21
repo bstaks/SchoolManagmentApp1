@@ -23,13 +23,19 @@ namespace DLLApp.DataModels
     
         public int StudentId { get; set; }
         public string Name { get; set; }
+
         [Display(Name ="Father Name")]
+        [Required]
         public string FatherName { get; set; }
         [Display(Name = "Mother Name")]
+        [Required]
         public string MotherName { get; set; }
-
+        [DataType(DataType.Date)]
+        [Required]
         public DateTime DOB { get; set; }
         [Display(Name = "Joining Date")]
+        [DataType(DataType.Date)]
+        [Required]
         public DateTime JoiningDate { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
