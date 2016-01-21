@@ -11,13 +11,18 @@ namespace DLLApp.DataModels
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class AddressInfo
     {
         public int AdressId { get; set; }
+        [Display(Name = "Address Line1")]
         public string AddressInfo1 { get; set; }
+        [Display(Name = "Address Line2")]
         public string AddressInfo2 { get; set; }
+        [Display(Name = "State")]
         public Nullable<int> StateID { get; set; }
+        [Display(Name = "City")]
         public Nullable<int> CityId { get; set; }
         public string LocationName { get; set; }
         public int Pincode { get; set; }
