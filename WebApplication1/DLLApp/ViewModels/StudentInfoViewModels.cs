@@ -11,6 +11,6 @@ namespace DLLApp.ViewModels
     {
         public Student Student { get; set; }
         public AspNetUser Users { get; set; }
-        public List<AddressInfo> AddressInfo { get; set; }
+        public AddressInfo AddressInfo { get; set; }
     }
 }
