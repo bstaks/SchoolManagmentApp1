@@ -54,6 +54,9 @@
     <Compile Include="DataModels\Account.cs">
       <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModels\AddressInfo.cs">
+      <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModels\AspNetRole.cs">
       <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
     </Compile>
@@ -87,6 +90,12 @@
     <Compile Include="DataModels\CustomerTrasaction.cs">
       <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModels\Department.cs">
+      <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModels\DepartmentTeacher.cs">
+      <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModels\MemberPasswordDetail.cs">
       <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
     </Compile>
@@ -114,6 +123,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SchoolManagmentApp.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataModels\Student.cs">
+      <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModels\Teacher.cs">
+      <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModels\Test_Users.cs">
       <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
     </Compile>
@@ -124,10 +139,9 @@
       <DependentUpon>SchoolManagmentApp.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\StudentInfoViewModels.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="DataModels\SchoolManagmentApp.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

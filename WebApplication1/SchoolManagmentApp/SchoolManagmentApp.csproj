@@ -180,6 +180,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,6 +252,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\ProfileDetails.cshtml" />
     <Content Include="Views\Account\EditProfileDetails.cshtml" />
+    <Content Include="Views\Student\AddStudent.cshtml" />
+    <Content Include="Views\Student\Shared\_StudentInfoPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,6 +270,20 @@
     <EmbeddedResource Include="Migrations\201601190652309_DOB1.resx">
       <DependentUpon>201601190652309_DOB1.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppUtility\AppUtility.csproj">
+      <Project>{66a42581-85b9-4bd0-b762-7f4886cf4855}</Project>
+      <Name>AppUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLLApp\BLLApp.csproj">
+      <Project>{ee4c33fe-6542-4fc7-9ca0-e24a2040c938}</Project>
+      <Name>BLLApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DLLApp\DLLApp.csproj">
+      <Project>{1490d6d8-0a08-48f0-8a24-b07ef1f78466}</Project>
+      <Name>DLLApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
