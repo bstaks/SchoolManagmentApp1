@@ -1,25 +1,16 @@
 ﻿@model DLLApp.ViewModels.StudentInfoViewModels
 
 @{
-    ViewBag.Title = "AddStudent";
+    ViewBag.Title = "Add Student";
 }
 
-<h2>AddStudent</h2>
-
-@using (Html.BeginForm()) 
+<h2>Add Student</h2>
+<h4>Student Info</h4>
+<hr />
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>StudentInfoViewModels</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+    @Html.Partial("~/Views/Student/Shared/_StudentInfoPartial.cshtml", Model)
 }
 
 
